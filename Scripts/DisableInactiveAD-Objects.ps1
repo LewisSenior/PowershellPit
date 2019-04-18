@@ -1,7 +1,7 @@
 ﻿# Gets time stamps for all computers in the domain that have NOT logged in since after specified date
 import-module activedirectory
 
-# School FQDN
+# Domain FQDN
 $domain = "example.local"
 
 # How many days users and computers need to be inactive for this script to disable them
@@ -20,7 +20,7 @@ $testMode = $true
 # Excludes users with a prefix of Svc by default
 $SVCusrExclusion = "svc*"
  
-# Get all AD computers with lastLogonTimestamp less than our time and store in varriable
+# Get all AD computers with lastLogonTimestamp less than our time and store in variable
 $OldPCs = Get-ADComputer -Filter {(LastLogonTimeStamp -lt $time)} -Properties LastLogonTimeStamp
 $OldUSERS = Get-ADUser -Filter {(LastLogonTimeStamp -lt $time -AND Name -notlike $SVCusrExclusion)} -Properties LastLogonTimeStamp
 
@@ -28,12 +28,12 @@ $OldUSERS = Get-ADUser -Filter {(LastLogonTimeStamp -lt $time -AND Name -notlike
 $OldPCs | select-object Name,@{Name="Stamp"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}} | export-csv OLD_Computer.csv -notypeinformation
 $OldUSERS | select-object Name,@{Name="Stamp"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}} | export-csv OLD_User.csv -notypeinformation
 
-# Test to see if Archieve OU exists
+# Test to see if Archive OU exists
 $OUtest_Decommisioned = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OU'"
 $OUtest_Users = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OUu'"
 $OUtest_Computers = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OUc'"
 
-# If Archieve OU exists disable Computer objects and move
+# If Archive OU exists disable Computer objects and move
 if($testMode){
     If($OUtest_Decommisioned){
         $OldPCs | Set-ADComputer -Enabled $false -WhatIf
