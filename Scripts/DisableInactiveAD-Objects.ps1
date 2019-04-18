@@ -9,23 +9,24 @@ $DaysInactive = 365
 $time = (Get-Date).Adddays(-($DaysInactive))
 
 # Name of OU to drop the new _Decommisioned OU into
-$OU = "DC=example,DC=local"
+$OU = "OU=***REMOVED***,DC=***REMOVED***,DC=local"
 
 # Name of new OU to be created
-$OUnamed = "_Decommisioned"
+$OUnamed = "_Decommisioned_"
+$FullDou = "OU=" + $OUnamed + "," + $OU
 
 # New sub OUs
-$OUnamedc = "_Computers"
-$OUnameu = "_Users"
+$OUnamec = "_Computers_"
+$OUnameu = "_Users_"
 
 # Full OU string for each new OU
 $OUd = "OU=" + $OUnamed + "," + $OU
-$OUc = "OU=" + $OUnamec + "," + $OU
-$OUu = "OU=" + $OUnameu + "," + $OU
+$OUc = "OU=" + $OUnamec + "," + $FullDou
+$OUu = "OU=" + $OUnameu + "," + $FullDou
 
 # Test state - True: Outputs what will be moved and disabled - False: Executes the script - 
 #(User true first and check output, if happy with what the script will do change to false and run again)
-$testMode = $true
+$testMode = $false
 
 # Excludes users with a prefix of Svc by default
 $SVCusrExclusion = "svc*"
