@@ -14,7 +14,7 @@ $OU = "DC=example,DC=local"
 # Name of new OU to be created
 $OUnamed = "_Decommisioned"
 
-# Sub new OUs
+# New sub OUs
 $OUnamedc = "_Computers"
 $OUnameu = "_Users"
 
