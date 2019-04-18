@@ -8,10 +8,20 @@ $domain = "example.local"
 $DaysInactive = 365
 $time = (Get-Date).Adddays(-($DaysInactive))
 
-# Name of OU for old users and computers to drop into
-$OU = "OU=_Decommisioned,DC=example,DC=local"
-$OUc = "OU=_Computers," + $OU
-$OUu = "OU=_Users," + $OU
+# Name of OU to drop the new _Decommisioned OU into
+$OU = "DC=example,DC=local"
+
+# Name of new OU to be created
+$OUnamed = "_Decommisioned"
+
+# Sub new OUs
+$OUnamedc = "_Computers"
+$OUnameu = "_Users"
+
+# Full OU string for each new OU
+$OUd = "OU=" + $OUnamed + "," + $OU
+$OUc = "OU=" + $OUnamec + "," + $OU
+$OUu = "OU=" + $OUnameu + "," + $OU
 
 # Test state - True: Outputs what will be moved and disabled - False: Executes the script - 
 #(User true first and check output, if happy with what the script will do change to false and run again)
@@ -29,7 +39,7 @@ $OldPCs | select-object Name,@{Name="Stamp"; Expression={[DateTime]::FromFileTim
 $OldUSERS | select-object Name,@{Name="Stamp"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}} | export-csv OLD_User.csv -notypeinformation
 
 # Test to see if Archive OU exists
-$OUtest_Decommisioned = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OU'"
+$OUtest_Decommisioned = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OUd'"
 $OUtest_Users = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OUu'"
 $OUtest_Computers = Get-ADOrganizationalUnit -Filter "distinguishedName -eq '$OUc'"
 
@@ -42,23 +52,23 @@ if($testMode){
         If($OUtest_Users){
             $OldUSERS | Move-ADObject -TargetPath $OUu -WhatIf
         } else {
-            New-ADOrganizationalUnit -Name "_Users" -Path $OU -WhatIf
+            New-ADOrganizationalUnit -Name "_Users" -Path $OUd -WhatIf
             $OldUSERS | Move-ADObject -TargetPath $OUu -WhatIf
         }
 
         If($OUtest_Computers){
             $OldPCs | Move-AdObject -TargetPath $OUc -WhatIf
         } else {
-            New-ADOrganizationalUnit -Name "_Computers" -Path $OU -WhatIf
+            New-ADOrganizationalUnit -Name "_Computers" -Path $OUd -WhatIf
             $OldPCs | Move-AdObject -TargetPath $OUc -WhatIf
         }
     
     } 
     # Otherwise create _Decommisioned, _Users, and _Computers OU at the root of the domain, disable Computer objects and move
     else {
-        New-ADOrganizationalUnit -Name "_Decommisioned" -WhatIf
-        New-ADOrganizationalUnit -Name "_Users" -Path $OU -WhatIf
-        New-ADOrganizationalUnit -Name "_Computers" -Path $OU -WhatIf
+        New-ADOrganizationalUnit -Name $OUnamed -Path $OU -WhatIf
+        New-ADOrganizationalUnit -Name $OUnameu -Path $OUd -WhatIf
+        New-ADOrganizationalUnit -Name $OUnamec -Path $OUd -WhatIf
 
         $OldPCs | Set-ADComputer -Enabled $false -WhatIf
         $OldUSERS | Set-ADUser -Enabled $false -WhatIf
@@ -74,23 +84,23 @@ if($testMode){
             If($OUtest_Users){
                 $OldUSERS | Move-ADObject -TargetPath $OUu
             } else {
-                New-ADOrganizationalUnit -Name "_Users" -Path $OU
+                New-ADOrganizationalUnit -Name $OUnameu -Path $OU
                 $OldUSERS | Move-ADObject -TargetPath $OUu
             }
 
             If($OUtest_Computers){
                 $OldPCs | Move-AdObject -TargetPath $OUc
             } else {
-                New-ADOrganizationalUnit -Name "_Computers" -Path $OU
+                New-ADOrganizationalUnit -Name $OUnamec -Path $OU
                 $OldPCs | Move-AdObject -TargetPath $OUc
             }
     
         } 
         # Otherwise create _Decommisioned, _Users, and _Computers OU at the root of the domain, disable Computer objects and move
         else {
-            New-ADOrganizationalUnit -Name "_Decommisioned"
-            New-ADOrganizationalUnit -Name "_Users" -Path $OU
-            New-ADOrganizationalUnit -Name "_Computers" -Path $OU
+            New-ADOrganizationalUnit -Name $OUnamed -path $OU
+            New-ADOrganizationalUnit -Name $OUnameu -Path $OUd
+            New-ADOrganizationalUnit -Name $OUnamec -Path $OUd
 
             $OldPCs | Set-ADComputer -Enabled $false
             $OldUSERS | Set-ADUser -Enabled $false
