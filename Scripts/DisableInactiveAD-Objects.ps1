@@ -9,7 +9,7 @@ $DaysInactive = 365
 $time = (Get-Date).Adddays(-($DaysInactive))
 
 # Name of OU to drop the new _Decommisioned OU into
-$OU = "OU=***REMOVED***,DC=***REMOVED***,DC=local"
+$OU = "OU=Main,DC=domain,DC=local"
 
 # Name of new OU to be created
 $OUnamed = "_Decommisioned_"
