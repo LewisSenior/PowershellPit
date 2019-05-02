@@ -1,5 +1,5 @@
-﻿$OUPath = "OU=***REMOVED***,OU=Users,OU=***REMOVED***,DC=***REMOVED***,DC=local"
-$ImportedCSV = Import-Csv "C:\Users\***REMOVED***\Desktop\***REMOVED***"
+﻿$OUPath = "OU=People,OU=Users,OU=Main,DC=domain,DC=local"
+$ImportedCSV = Import-Csv "C:\Users\user\Desktop\csv.csv"
 Import-Module ActiveDirectory
 
 $IMportedCSV | Foreach{

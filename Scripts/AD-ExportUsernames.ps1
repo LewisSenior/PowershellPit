@@ -1,5 +1,5 @@
-﻿$OUPath = "OU=***REMOVED***,OU=Users,OU=***REMOVED***,DC=***REMOVED***,DC=local"
-$ExportPath = "C:\Users\***REMOVED***\desktop\***REMOVED***"
+﻿$OUPath = "OU=People,OU=Users,OU=Main,DC=domain,DC=local"
+$ExportPath = "C:\Users\user\desktop\csv.csv"
 Import-Module ActiveDirectory
 Get-ADUser -Filter * -SearchBase $OUPath | Select-Object -Property SamAccountName | Export-Csv $ExportPath
 
