@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-05T10:14:20.842Z" agent="5.0 (Windows)" etag="oJR9v9Dyf6LjnRksqVfS" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-05T10:15:40.901Z" agent="5.0 (Windows)" etag="_8YfpJV6reZcI8Ot4I7s" version="14.2.9" type="github">
   <diagram id="tA9fE0zyt1v4sHrgrl51" name="Page-1">
     <mxGraphModel dx="1038" dy="511" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -15,6 +15,12 @@
         </mxCell>
         <mxCell id="XX5m7bXMJswb9Ko2jpML-2" value="" style="shadow=0;dashed=0;html=1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.3d.esx_esxi;" vertex="1" parent="1">
           <mxGeometry x="380" y="186.22" width="103.77" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="XX5m7bXMJswb9Ko2jpML-18" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.s3Bucket;fillColor=#4286c5;strokeColor=#57A2D8;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="238.5" y="60" width="61.5" height="63.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="XX5m7bXMJswb9Ko2jpML-19" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.s3Bucket;fillColor=#4286c5;strokeColor=#57A2D8;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="401.14" y="151.1" width="61.5" height="63.800000000000004" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
