@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-05T10:10:54.121Z" agent="5.0 (Windows)" etag="htZt_LGfmp4PxsJsrkHx" version="14.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-05T10:14:20.842Z" agent="5.0 (Windows)" etag="oJR9v9Dyf6LjnRksqVfS" version="14.2.9" type="github">
   <diagram id="tA9fE0zyt1v4sHrgrl51" name="Page-1">
     <mxGraphModel dx="1038" dy="511" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -7,7 +7,7 @@
         <mxCell id="XX5m7bXMJswb9Ko2jpML-15" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.flatEdge;fillColor=#000000;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="330" y="110" width="256.31" height="146" as="geometry" />
         </mxCell>
-        <mxCell id="XX5m7bXMJswb9Ko2jpML-3" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dashedEdgeDouble;fillColor=#000000;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="XX5m7bXMJswb9Ko2jpML-3" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;strokeWidth=1;align=center;outlineConnect=0;dashed=0;outlineConnect=0;shape=mxgraph.aws3d.dashedEdgeDouble;aspect=fixed;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="300" y="234.43" width="80" height="45.57" as="geometry" />
         </mxCell>
         <mxCell id="XX5m7bXMJswb9Ko2jpML-1" value="" style="shadow=0;dashed=0;html=1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.3d.esx_esxi;" vertex="1" parent="1">
